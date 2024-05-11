@@ -1,2 +1,2 @@
 # PIS_BSTZ
-test
+Repo pod projekt
