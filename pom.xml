@@ -54,7 +54,7 @@
 				<configuration>
 					<appName>pisbstz</appName>
 					<processTypes>
-						<web>java -jar --server.port=$PORT target/${project.build.finalName}.jar</web>
+						<web>java -jar -Dserver.port=$PORT target/${project.build.finalName}.jar</web>
 					</processTypes>
 				</configuration>
 			</plugin>
