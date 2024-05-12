@@ -47,7 +47,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
+<!-- 			<plugin>
 				<groupId>com.heroku.sdk</groupId>
 				<artifactId>heroku-maven-plugin</artifactId>
 				<version>3.0.7</version>
@@ -57,7 +57,7 @@
 						<web>java -jar -Dserver.port=$PORT target/${project.build.finalName}.jar</web>
 					</processTypes>
 				</configuration>
-			</plugin>
+			</plugin> -->
 		</plugins>
 	</build>
 
