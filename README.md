@@ -1,2 +1,3 @@
 # PIS_BSTZ
-Repo pod projekt
+Repo pod projekt.
+
