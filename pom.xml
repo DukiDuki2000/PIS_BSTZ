@@ -7,11 +7,11 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.2.1</version>
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>Project_Ceneo_BSTZ</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>BSTZ</name>
-	<description>Design of Ceneo application</description>
+	<groupId>com.madadipouya.elasticsearch.springdata.example</groupId>
+	<artifactId>elasticsearch-springdata</artifactId>
+	<version>0.0.2</version>
+	<name>Elasticsearch SpringData</name>
+	<description>Elasticsearch SpringData</description>
 	<properties>
 		<java.version>17</java.version>
 		<mockito.version>5.8.0</mockito.version>
