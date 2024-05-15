@@ -1,0 +1,17 @@
+{
+  "frontendFolder": "C:/Users/asusx/Desktop/konsultacje/konsultacje/./frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "C:/Users/asusx/Desktop/konsultacje/konsultacje/./frontend/generated/jar-resources",
+  "staticOutput": "C:/Users/asusx/Desktop/konsultacje/konsultacje/target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "C:\\Users\\asusx\\Desktop\\konsultacje\\konsultacje\\target\\classes\\META-INF\\VAADIN\\config",
+  "frontendBundleOutput": "C:\\Users\\asusx\\Desktop\\konsultacje\\konsultacje\\target\\classes\\META-INF\\VAADIN\\webapp",
+  "devBundleOutput": "C:/Users/asusx/Desktop/konsultacje/konsultacje/target/dev-bundle/webapp",
+  "devBundleStatsOutput": "C:/Users/asusx/Desktop/konsultacje/konsultacje/target/dev-bundle/config",
+  "jarResourcesFolder": "C:/Users/asusx/Desktop/konsultacje/konsultacje/./frontend/generated/jar-resources",
+  "themeName": "",
+  "clientServiceWorkerSource": "C:\\Users\\asusx\\Desktop\\konsultacje\\konsultacje\\target\\sw.ts",
+  "pwaEnabled": false,
+  "offlineEnabled": false,
+  "offlinePath": "'offline.html'"
+}
