@@ -41,4 +41,9 @@ class BookController {
     void deleteBook(@PathVariable Long id) {
         bookRepository.deleteById(id);
     }
+
+    @GetMapping("/categories")
+    public List<String> getCategories() {
+        return bookRepository.findAllCategories();
+    }
 }
