@@ -126,6 +126,21 @@
   cursor: pointer;
   font-family: monospace;
   font-size: 1rem;
+  text-decoration: none;
+  min-width: 305px;
+}
+
+.sign-up-form-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(30deg, rgba(180, 58, 180, 1), rgba(166, 29, 253, 1), rgba(69, 192, 252, 1));
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 1rem;
   text-decoration: none !important;
   min-width: 305px;
 }
@@ -231,4 +246,44 @@
     justify-content: center;
     align-items: center;
   }
+}
+.books_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.book_tile {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Dodanie cienia */
+  height: 300px; /* Ustawienie stałej wysokości dla kafelka */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s, box-shadow 0.3s; /* Dodanie płynnego przejścia */
+}
+
+.book_tile:hover {
+  transform: translateY(-5px); /* Efekt unoszenia kafelka */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Zwiększenie cienia przy najechaniu */
+}
+
+.book_tile h3 {
+  margin-top: 0;
+  font-size: 1.5em;
+  font-family: monospace;
+  text-align: center;
+}
+
+.book_tile p {
+  margin: 0.5em 0;
+}
+
+.page_content {
+  margin-top: 100px;
+  margin-left: 5%;
+  margin-right: 5%;
 }

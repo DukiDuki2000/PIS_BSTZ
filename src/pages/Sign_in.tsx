@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Sign_Up_Button from '../components/Sign_Up_Button';
 
 const SignIn = () => {
     return (
@@ -19,9 +20,9 @@ const SignIn = () => {
                     <button type="submit" className='sign-form-btn'>Sign In</button>
                 </form>
                 <h1>Don't have account?</h1>
-                <Link to="/register">
-                    <button type='button' className='sign-form-btn'>Sign up</button>
-                </Link>
+                <div>
+                    <Sign_Up_Button />
+                </div>
             </div>
         </div >
     );

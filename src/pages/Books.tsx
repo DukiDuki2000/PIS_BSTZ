@@ -19,16 +19,15 @@ function Books() {
 
     return (
         <div className='page_content'>
-            <ul>
+            <div className='books_grid'>
                 {books.map(({ id, title, author_name, author_surname, category }) => (
-                    <li key={id}>
-                        <p>Title: {title}</p>
-                        <p>Author name: {author_name}</p>
-                        <p>Author surname: {author_surname}</p>
-                        <p>Category: {category}</p>
-                    </li>
+                    <div key={id} className='book_tile'>
+                        <h3>{title}</h3>
+                        <p><strong>Author:</strong> {author_name} {author_surname}</p>
+                        <p><strong>Category:</strong> {category}</p>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }
