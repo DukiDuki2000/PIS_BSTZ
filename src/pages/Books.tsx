@@ -6,7 +6,7 @@ function Books() {
 
     const fetchBooks = async () => {
         try {
-            const { data } = await axios.get('http://localhost:8080/books');
+            const { data } = await axios.get('http://localhost:7788/books');
             setBooks(data);
         } catch (error) {
             console.error('There was an error fetching the books!', error);
