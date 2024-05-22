@@ -27,12 +27,14 @@
   padding: 10px;
 }
 
+
 #books_button,
 #sign_in_button,
 #about_us_button {
+  margin-left: -25%;
   font-family: monospace;
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: x-large;
   padding: 10px;
   background-color: transparent;
   border-width: 3px;
@@ -44,6 +46,7 @@
   border-radius: 20px;
   font-size: 1rem;
 }
+
 
 #books_button:hover,
 #about_us_button:hover,
