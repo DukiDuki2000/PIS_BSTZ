@@ -16,16 +16,16 @@ public class Book {
     private @Id
     @GeneratedValue Long id;
     private String title;
-    private String author_name;
-    private String author_surname;
+    private String authorName;
+    private String authorSurname;
     private String category;
 
     public Book() {}
 
-    public Book(String title, String author_name, String author_surname, String category) {
+    public Book(String title, String authorName, String authorSurname, String category) {
         this.title = title;
-        this.author_name = author_name;
-        this.author_surname = author_surname;
+        this.authorName = authorName;
+        this.authorSurname = authorSurname;
         this.category = category;
     }
 
@@ -45,32 +45,32 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor_name() {
-        return author_name;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public void setAuthor_name(String author_name) {
-        this.author_name = author_name;
+    public void setAuthorName(String author_name) {
+        this.authorName = author_name;
     }
 
-    public String getAuthor_surname() {
-        return author_surname;
+    public String getAuthorSurname() {
+        return authorSurname;
     }
 
-    public void setAuthor_surname(String author_surname) {
-        this.author_surname = author_surname;
+    public void setAuthorSurname(String author_surname) {
+        this.authorSurname = author_surname;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Book book)) return false;
-        return Objects.equals(id, book.id) && Objects.equals(title, book.title) && Objects.equals(author_name, book.author_name) && Objects.equals(author_surname, book.author_surname) && Objects.equals(category, book.category);
+        return Objects.equals(id, book.id) && Objects.equals(title, book.title) && Objects.equals(authorName, book.authorName) && Objects.equals(authorSurname, book.authorSurname) && Objects.equals(category, book.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, author_name, author_surname, category);
+        return Objects.hash(id, title, authorName, authorSurname, category);
     }
 
     @Override
@@ -78,8 +78,8 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", author_name='" + author_name + '\'' +
-                ", author_surname='" + author_surname + '\'' +
+                ", author_name='" + authorName + '\'' +
+                ", author_surname='" + authorSurname + '\'' +
                 ", category='" + category + '\'' +
                 '}';
     }

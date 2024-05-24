@@ -2,6 +2,7 @@ package backend.client_app.controller;
 
 import backend.client_app.model.Book;
 import backend.client_app.repository.BookRepository;
+import backend.client_app.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,14 +12,19 @@ import java.util.List;
 class BookController {
 
     private final BookRepository bookRepository;
+    private final BookService bookService;
 
-    public BookController(BookRepository bookRepository){
+    public BookController(BookRepository bookRepository, BookService bookService){
         this.bookRepository = bookRepository;
+        this.bookService = bookService;
     }
 
     @GetMapping("/books")
-    List<Book> all(){
-        return bookRepository.findAll();
+    public List<Book> getAllBooks(
+            @RequestParam(required = false) String sortBy,
+            @RequestParam(required = false) String sortOrder)
+    {
+        return bookService.getAllBooks(sortBy, sortOrder);
     }
 
     @GetMapping("/book/{id}")
@@ -45,5 +51,15 @@ class BookController {
     @GetMapping("/categories")
     public List<String> getCategories() {
         return bookRepository.findAllCategories();
+    }
+
+    @GetMapping("/authors")
+    public List<String> getAuthors() {
+        return bookRepository.findAllAuthors();
+    }
+
+    @GetMapping("/books/author")
+    public List<Book> getBooksByAuthor(@RequestParam("author_name") String authorName, @RequestParam("author_surname") String authorSurname) {
+        return bookRepository.findBookByAuthor(authorName, authorSurname);
     }
 }
