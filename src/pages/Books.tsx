@@ -20,10 +20,10 @@ function Books() {
     return (
         <div className='page_content'>
             <div className='books_grid'>
-                {books.map(({ id, title, author_name, author_surname, category }) => (
+                {books.map(({ id, title, authorName, authorSurname, category }) => (
                     <div key={id} className='book_tile'>
                         <h3>{title}</h3>
-                        <p><strong>Author:</strong> {author_name} {author_surname}</p>
+                        <p><strong>Author:</strong> {authorName} {authorSurname}</p>
                         <p><strong>Category:</strong> {category}</p>
                     </div>
                 ))}
