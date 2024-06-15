@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
+import AdminRoute from './components/AdminRoute';
 import * as PiIcons from 'react-icons/pi'
 import AuthService from "./services/auth.service";
 import IUser from './types/user.type';
@@ -163,14 +163,14 @@ class App extends Component<Props, State> {
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/user" element={<BoardUser />} />
-            <Route path="/admin" element={<BoardAdmin />} />
             <Route path='/books' element={<Books />} />
             <Route path='/search' element={<SearchResults />} />
             <Route path='/about_us' element={<About_Us />} />
-            <Route path='/add_book' element={<Add_book />} />
-            <Route path='/edit_book_selection' element={<EditBookSelection />} /> {/* Updated Route */}
-            <Route path='/edit_book/:bookId' element={<EditBook />} />
-            <Route path='/lend' element={<Lend_To_User />} />
+            <Route path="/admin" element={<AdminRoute element={<BoardAdmin />} />} />
+            <Route path="/add_book" element={<AdminRoute element={<Add_book />} />} />
+            <Route path="/edit_book_selection" element={<AdminRoute element={<EditBookSelection />} />} />
+            <Route path="/edit_book/:bookId" element={<AdminRoute element={<EditBook />} />} />
+            <Route path="/lend" element={<AdminRoute element={<Lend_To_User />} />} />
           </Routes>
           
         </div>

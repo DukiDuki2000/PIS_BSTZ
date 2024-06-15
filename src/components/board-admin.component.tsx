@@ -47,7 +47,7 @@ export default class BoardAdmin extends Component<Props, State> {
 
   render() {
     return (
-<div className='page_container'>
+      <div className='page_container'>
             <div className='text_container'>
                 <h1>Galaktyczne lektury!</h1>
                 <p>System administracyjny - Galaktyczne Lektury</p>
