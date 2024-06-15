@@ -1,38 +1,528 @@
-.App {
+/* Ogólne */
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Karta */
+
+.card {
+  background-color: #f7f7f7;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card-container.card {
+  border-radius: 8px;
+  max-width: 350px !important;
+  padding: 40px 40px;
+}
+
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  border-radius: 50%;
+}
+
+/* Nawigacja */
+
+.nav-link {
+  color: aliceblue;
+}
+
+.navbar.bg-dark {
+  background: linear-gradient(90deg, rgba(180, 58, 180, 1), rgba(166, 29, 253, 1), rgba(69, 192, 252, 1));
+}
+
+.header #logo {
+  margin-left: 3%;
+  display: flex;
+  color: aliceblue;
+  text-decoration: none;
+  align-items: center;
+}
+
+.header #logo_text {
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 2rem;
+  padding: 10px;
+}
+
+#books_button,
+#sign_in_button,
+#about_us_button {
+  margin-left: -25%;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px;
+  background-color: transparent;
+  border: 3px solid aliceblue;
+  color: aliceblue;
+  cursor: pointer;
+  transition: filter 0.3s;
+  border-radius: 20px;
+}
+
+#books_button:hover,
+#about_us_button:hover,
+#sign_in_button:hover {
+  filter: brightness(0.85);
+}
+
+/* Stopka */
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
   text-align: center;
+  font-family: monospace;
+  opacity: 70%;
+  z-index: 1000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Strona główna */
+
+.page_container {
+  margin-top: 60px;
+  display: flex;
+  align-items: flex-start;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 100px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.image_container,
+.text_container {
+  flex: 1;
+  padding: 20px;
+  text-align: justify;
+  font-family: monospace;
+  font-size: x-large;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.image_container img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Formularze */
+
+.sign-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.3);
+  justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.input-box {
+  margin-bottom: 15px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 2rem;
+  min-width: 250px;
+}
+
+.sign-form-btn,
+.sign-up-form-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(30deg, rgba(180, 58, 180, 1), rgba(166, 29, 253, 1), rgba(69, 192, 252, 1));
   color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 1rem;
+  text-decoration: none;
+  min-width: 305px;
 }
 
-.App-link {
-  color: #61dafb;
+.sign-form-btn:hover {
+  background: linear-gradient(30deg, rgba(160, 38, 160, 1), rgba(146, 9, 223, 1), rgba(49, 172, 232, 1));
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.sign-form-label {
+  display: flex;
+  margin-bottom: 5px;
+  font-family: monospace;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.sign-form h1 {
+  display: flex;
+  justify-content: center;
+}
+
+/* Książki */
+
+.books_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.book_tile {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book_tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.book_tile h3 {
+  margin-top: 0;
+  font-size: 1.5em;
+  font-family: monospace;
+  text-align: center;
+}
+
+.book_tile p {
+  margin: 0.5em 0;
+}
+
+.page_content {
+  margin: 20px 5% 100px;
+}
+
+.sort_controls {
+  margin-bottom: 20px;
+  padding: 20px;
+  display: flex;
+  gap: 10px; /* Odstęp między elementami */
+}
+
+.add_content {
+  margin-top: 50px;
+  justify-self: center;
+  border-radius: 5px;
+}
+
+/* Przyciski */
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.button.delete {
+  background-color: #dc3545;
+}
+
+.button.delete:hover {
+  background-color: #c82333;
+}
+
+.button.edit {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.button.edit:hover {
+  background-color: #e0a800;
+}
+
+.delete_button {
+  width: 100%;
+  padding: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete_button:hover {
+  background-color: #c82333;
+}
+
+/* Formularze */
+
+.form_group {
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.form_group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form_group input[type="text"],
+.form_group input[type="password"] {
+  width: 96%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form_group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  appearance: none;
+  padding-right: 30px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/></svg>') no-repeat calc(100% - 10px) center;
+}
+
+.form_group select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Edit Button */
+
+.edit_button {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.edit_button button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit_button button:hover {
+  background-color: #0056b3;
+}
+
+/* Slider */
+
+.text_slider_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.slider_container {
+  flex: 1;
+  padding: 20px;
+}
+
+.overlay_slider_container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.overlay_slider_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsywność */
+
+@media (max-width: 768px) {
+  .header #logo_text {
+    font-size: 1.5rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  #books_button,
+  #sign_in_button,
+  #about_us_button {
+    font-size: 1rem;
+    padding: 8px;
   }
+
+  .page_container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .image_container,
+  .text_container {
+    flex: 1 1 100%;
+    padding: 10px;
+  }
+
+  .sign-form {
+    padding: 15px;
+  }
+
+  .sign-form-btn {
+    min-width: 100%;
+  }
+
+  .header #logo {
+    margin-left: 1%;
+  }
+
+  .text_slider_container {
+    flex-direction: column;
+  }
+
+  .slider_container {
+    display: none;
+  }
+
+  .overlay_slider_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form_container {
+    padding: 10px;
+  }
+}
+
+.tile_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Odstęp między kafelkami */
+}
+
+.tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px; /* Szerokość kafelka */
+  height: 150px; /* Wysokość kafelka */
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: monospace;
+  text-align: center;
+  text-decoration: none; /* Usunięcie domyślnego podkreślenia */
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.tile:hover {
+  background-color: #e0e0e0;
+}
+
+.tile_content {
+  padding: 20px;
+}
+
+.searchBarContainer {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  max-width: 300px;
+}
+
+.searchInputWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 20px;
+  padding-right: 10px;
+  background-color: white;
+  border: 3px solid aliceblue;
+  box-shadow: none;
+}
+
+.searchInput {
+  flex-grow: 1;
+  padding: 0.25rem 0.5rem;
+  height: 30px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  outline: none;
+  border: none;
+}
+
+.searchButton {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchIcon {
+  color: #333333;
+  font-size: 1.5rem;
 }
