@@ -25,7 +25,8 @@ import Footer from "./components/Footer";
 import Books from './pages/Books';
 import About_Us from "./pages/About_Us";
 import SearchResults from './pages/SearchResults';
-import BorrowedBooks from "./pages/Borrowed_user";
+import BorrowedBooksUser from "./pages/Borrowed_user";
+import AllBorrowings from "./pages/Borrowed_mod";
 
 import Add_book from './pages/Add_book';
 import EditBookSelection from './pages/Edit_book_selection';
@@ -112,6 +113,9 @@ class App extends Component<Props, State> {
                   <Link to={"/books"} className="nav-link" style={{ color: 'white' }}>
                     Książki
                   </Link>
+                  <Link to={"/all_borrowings"} className="nav-link" style={{ color: 'white' }}>
+                    Wypożyczenia
+                  </Link>
                 </li>
               )}
 
@@ -122,6 +126,9 @@ class App extends Component<Props, State> {
                   </Link>
                   <Link to={"/books"} className="nav-link" style={{ color: 'white' }}>
                     Książki
+                  </Link>
+                  <Link to={"/all_borrowings"} className="nav-link" style={{ color: 'white' }}>
+                    Wypożyczenia
                   </Link>
                 </li>
               )}
@@ -187,18 +194,20 @@ class App extends Component<Props, State> {
               <Route path="/user" element={<UserRoute element={<BoardUser />} />} />
               <Route path='/books' element={<UserRoute element={<Books />} />} />
               <Route path='/search' element={<UserRoute element={<SearchResults />} />} />
-              <Route path='/borrowed_books' element={<UserRoute element={<BorrowedBooks />} />} />
+              <Route path='/borrowed_books' element={<UserRoute element={<BorrowedBooksUser />} />} />
               {/* Moderatorowe */}
               <Route path="/admin" element={<ModRoute element={<BoardMod />} />} />
               <Route path="/add_book" element={<ModRoute element={<Add_book />} />} />
               <Route path="/edit_book_selection" element={<ModRoute element={<EditBookSelection />} />} />
               <Route path="/edit_book/:bookId" element={<ModRoute element={<EditBook />} />} />
+              <Route path="/all_borrowings" element={<ModRoute element={<AllBorrowings />} />} />
 
               {/* Adminowe */}
               <Route path="/admin" element={<AdminRoute element={<BoardAdmin />} />} />
               <Route path="/add_book" element={<AdminRoute element={<Add_book />} />} />
               <Route path="/edit_book_selection" element={<AdminRoute element={<EditBookSelection />} />} />
               <Route path="/edit_book/:bookId" element={<AdminRoute element={<EditBook />} />} />
+              <Route path="v" element={<AdminRoute element={<AllBorrowings />} />} />
             </Routes>
           </div>
           <Footer companyName="Firma Krzak Sp. z o.o." year={2024} />

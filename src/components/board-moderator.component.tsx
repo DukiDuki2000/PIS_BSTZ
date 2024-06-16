@@ -1,5 +1,5 @@
 import { Component } from "react";
-
+import { Link } from 'react-router-dom';
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
 
@@ -44,11 +44,24 @@ export default class BoardAdmin extends Component<Props, State> {
 
   render() {
     return (
-      <div className="container">
-        <header className="jumbotron">
-          <h3>{this.state.content}</h3>
-        </header>
-      </div>
+      <div className='page_container'>
+            <div className='text_container'>
+                <h1>Galaktyczne lektury!</h1>
+                <p>System administracyjny - Galaktyczne Lektury</p>
+            </div>
+            <div className="tile_container">
+                <Link to='/edit_book_selection' className='tile'>
+                    <div className="tile_content">
+                        <h2>Lista książek + edycja</h2>
+                    </div>
+                </Link>
+                <Link to='/add_book' className='tile'>
+                    <div className="tile_content">
+                        <h2>Dodawanie książek</h2>
+                    </div>
+                </Link>
+            </div>   
+        </div>
     );
   }
 }

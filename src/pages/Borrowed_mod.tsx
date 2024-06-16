@@ -2,13 +2,13 @@ import React, { useState, useEffect, ChangeEvent } from 'react';
 import axios from 'axios';
 import { useUser } from "../components/UserContext"; 
 
-function BorrowedBooks() {
-    const [books, setBooks] = useState([]);
+function AllBorrowings() {
+    const [borrowings, setBorrowings] = useState([]);
     const [sortBy, setSortBy] = useState<string>('title'); 
     const [sortOrder, setSortOrder] = useState<string>('asc'); 
     const { user } = useUser(); 
 
-    const fetchBorrowedBooks = async () => {
+    const fetchAllBorrowings = async () => {
         if (!user) {
             return;
         }
@@ -19,20 +19,20 @@ function BorrowedBooks() {
                 params.sortBy = sortBy;
                 params.sortOrder = sortOrder;
             }
-            const { data } = await axios.get(`http://localhost:7788/users/${user.id}/borrowed-books`, { 
+            const { data } = await axios.get(`http://localhost:7788/admin/borrowings`, { 
                 params,
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 }
             });
-            setBooks(data);
+            setBorrowings(data);
         } catch (error) {
-            console.error('There was an error fetching the borrowed books!', error);
+            console.error('There was an error fetching the borrowings!', error);
         }
     };
 
     useEffect(() => {
-        fetchBorrowedBooks();
+        fetchAllBorrowings();
     }, [sortBy, sortOrder, user]);
 
     const handleSortByChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -49,9 +49,8 @@ function BorrowedBooks() {
                 <label>
                     Sortuj według:
                     <select value={sortBy} onChange={handleSortByChange}>
-                        <option value='title'>Tytuł</option>
-                        <option value='authorSurname'>Nazwisko autora</option>
-                        <option value='category'>Kategoria</option>
+                        <option value='user'>Nazwa użytkownika</option>
+                        <option value='title'>Tytuł książki</option>
                     </select>
                 </label>
                 <label>
@@ -62,12 +61,11 @@ function BorrowedBooks() {
                     </select>
                 </label>
             </div>
-            <div className='books_grid'>
-                {books.map(({ id, title, authorName, authorSurname, category }) => (
-                    <div key={id} className='book_tile'>
-                        <h3>{title}</h3>
-                        <p><strong>Author:</strong> {authorName} {authorSurname}</p>
-                        <p><strong>Category:</strong> {category}</p>
+            <div className='borrowings_list'>
+                {borrowings.map(({ id, userName, bookTitle }) => (
+                    <div key={id} className='borrowing_item'>
+                        <p><strong>Użytkownik:</strong> {userName}</p>
+                        <p><strong>Tytuł książki:</strong> {bookTitle}</p>
                     </div>
                 ))}
             </div>
@@ -75,4 +73,4 @@ function BorrowedBooks() {
     );
 }
 
-export default BorrowedBooks;
+export default AllBorrowings;

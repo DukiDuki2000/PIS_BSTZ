@@ -62,11 +62,6 @@ export default class BoardAdmin extends Component<Props, State> {
                         <h2>Dodawanie książek</h2>
                     </div>
                 </Link>
-                <Link to='/lend' className='tile'>
-                    <div className="tile_content">
-                        <h2>Wypożyczenie lokalne</h2>
-                    </div>
-                </Link>
             </div>   
         </div>
     );
