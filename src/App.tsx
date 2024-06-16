@@ -178,7 +178,8 @@ class App extends Component<Props, State> {
               <Route path="/register" element={<Register />} />
               <Route path="/profile" element={<Profile />} />
               <Route path='/about_us' element={<About_Us />} />
-              <Route path='/books' element={<Books />} />
+              {/* <Route path='/books' element={<Books />} />
+              <Route path='/search' element={<SearchResults />} /> */}
               {/* Userowe */}
               <Route path="/user" element={<UserRoute element={<BoardUser />} />} />
               <Route path='/books' element={<UserRoute element={<Books />} />} />
