@@ -6,7 +6,7 @@ import About_Us_Button from './About_Us_Button';
 import SearchBar from "./SearchBar";
 import '../App.css'; // Import the global CSS file
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <header className="header">
       <a href="/" id="logo">

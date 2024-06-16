@@ -5,13 +5,13 @@ import axios from 'axios';
 interface SearchResult {
   id: number;
   title: string;
-  author_name: string;
-  author_surname: string;
-  category: string;
+  author: string;
   description: string;
+  category: string;
+  status: string;
 }
 
-const SearchResults = () => {
+const SearchResults: React.FC = () => {
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -41,16 +41,17 @@ const SearchResults = () => {
       <h1>Search Results</h1>
       {isLoading && <p>Searching...</p>}
       {error && <p>Error: {error.message}</p>}
-      {searchResults.length > 0 && (
+      {searchResults.length > 0 ? (
         <ul>
           {searchResults.map((result) => (
             <li key={result.id}>
-              {result.title} - {result.description}
+              <strong>{result.title}</strong> - {result.author} - {result.description} - {result.category} - {result.status}
             </li>
           ))}
         </ul>
+      ) : (
+        !isLoading && <p>No results found.</p>
       )}
-      {searchResults.length === 0 && !isLoading && <p>No results found.</p>}
     </div>
   );
 };
