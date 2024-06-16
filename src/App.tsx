@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import { UserProvider } from './components/UserContext'; // Importuj UserProvider
+import { UserProvider } from './components/UserContext'; 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -25,11 +25,11 @@ import Footer from "./components/Footer";
 import Books from './pages/Books';
 import About_Us from "./pages/About_Us";
 import SearchResults from './pages/SearchResults';
+import BorrowedBooks from "./pages/Borrowed_user";
 
 import Add_book from './pages/Add_book';
 import EditBookSelection from './pages/Edit_book_selection';
 import EditBook from './pages/Edit_book';
-import Lend_To_User from './pages/Lend_to_user';
 
 import EventBus from "./common/EventBus";
 
@@ -134,6 +134,9 @@ class App extends Component<Props, State> {
                   <Link to={"/books"} className="nav-link" style={{ color: 'white' }}>
                     Książki
                   </Link>
+                  <Link to={"/borrowed_books"} className="nav-link" style={{ color: 'white' }}>
+                    Wypożyczenia
+                  </Link>
                 </li>
               )}
             </div>
@@ -184,11 +187,13 @@ class App extends Component<Props, State> {
               <Route path="/user" element={<UserRoute element={<BoardUser />} />} />
               <Route path='/books' element={<UserRoute element={<Books />} />} />
               <Route path='/search' element={<UserRoute element={<SearchResults />} />} />
+              <Route path='/borrowed_books' element={<UserRoute element={<BorrowedBooks />} />} />
               {/* Moderatorowe */}
               <Route path="/admin" element={<ModRoute element={<BoardMod />} />} />
               <Route path="/add_book" element={<ModRoute element={<Add_book />} />} />
               <Route path="/edit_book_selection" element={<ModRoute element={<EditBookSelection />} />} />
               <Route path="/edit_book/:bookId" element={<ModRoute element={<EditBook />} />} />
+
               {/* Adminowe */}
               <Route path="/admin" element={<AdminRoute element={<BoardAdmin />} />} />
               <Route path="/add_book" element={<AdminRoute element={<Add_book />} />} />
