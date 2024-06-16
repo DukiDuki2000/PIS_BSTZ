@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 interface User {
     id: string;
     name: string;
-    token: string; // Dodaj token
+    token: string;
 }
 
 interface UserContextType {

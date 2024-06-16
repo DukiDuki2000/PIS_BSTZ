@@ -1,13 +1,13 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import axios from 'axios';
 import SearchBar from "../components/SearchBar";
-import { useUser } from "../components/UserContext"; // Importuj kontekst użytkownika
+import { useUser } from "../components/UserContext"; 
 
 function Books() {
     const [books, setBooks] = useState([]);
-    const [sortBy, setSortBy] = useState<string>('title'); // Domyślnie 'title'
-    const [sortOrder, setSortOrder] = useState<string>('asc'); // Domyślnie 'asc'
-    const { user } = useUser(); // Użyj kontekstu użytkownika
+    const [sortBy, setSortBy] = useState<string>('title'); 
+    const [sortOrder, setSortOrder] = useState<string>('asc'); 
+    const { user } = useUser(); 
 
     const fetchBooks = async () => {
         try {
@@ -52,7 +52,7 @@ function Books() {
                 }
             );
             alert(`Book with id ${id} borrowed successfully.`);
-            fetchBooks(); // Aktualizacja listy książek po wypożyczeniu
+            fetchBooks(); 
         } catch (error) {
             console.error('There was an error borrowing the book!', error);
             alert('Failed to borrow the book.');
