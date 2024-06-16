@@ -4,7 +4,6 @@ import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
 import { Link } from 'react-router-dom';
 
-import Go_back from './Go_back'
 
 type Props = {};
 
