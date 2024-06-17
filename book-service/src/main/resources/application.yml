@@ -1,0 +1,66 @@
+server:
+    port: 9002
+
+spring:
+    application:
+        name: book-service
+
+#    elasticsearch:
+#        uris: http://localhost:9200
+
+#    elasticsearch:
+#        host: localhost
+#        uri: 9200
+#        ssl:
+#            enabled: true
+#            truststore-path: classpath:ca.crt
+#            truststore-password: GQ7wpccv9U-ccS4bpkAc
+#            truststore-username: elastic
+
+#    elasticsearch:
+#        uris: https://localhost:9200
+#        username: elastic
+#        password: GQ7wpccv9U-ccS4bpkAc
+#        ssl:
+#          truststore-location: classpath:ca.crt
+#          truststore-password: GQ7wpccv9U-ccS4bpkAc
+
+
+
+
+    datasource:
+        url: jdbc:postgresql://localhost:5800/bookdb
+        username: book
+        password: book
+
+    jpa:
+        hibernate:
+            ddl-auto: update
+    data:
+        mongodb:
+            authentication-database: admin
+            username: root
+            password: admin
+            database: Log
+            port: 5850
+            host: localhost
+    kafka:
+        bootstrap-address: localhost:29092
+        bootstrap-servers: localhost:29092
+        consumer:
+            group-id: book-service
+            auto-offset-reset: latest
+            bootstrap-servers: localhost:29092
+            properties:
+              spring.json.trusted.packages: com.project.*
+        topics: {
+            loan-book: loan-book,
+            loan-succes: loan-succes,
+            loan-fail: loan-fail
+        }
+
+    jackson:
+        serialization:
+            indent-output: true
+#    main:
+#        allow-bean-definition-overriding: true

@@ -1,0 +1,46 @@
+server:
+    port: 9000 
+
+spring:
+    application:
+        name: auth-api-gateway
+
+    datasource:
+        url: jdbc:postgresql://localhost:5901/apigatedb
+        username: apigate
+        password: apigate
+
+    jpa:
+        hibernate:
+            ddl-auto: update
+
+    kafka:
+        bootstrap-address: localhost:29092
+        bootstrap-servers: localhost:29092
+        consumer:
+            group-id: auth-api-gateway
+            auto-offset-reset: latest
+            bootstrap-servers: localhost:29092
+            properties:
+                spring.json.trusted.packages: com.project.*
+        topics: {
+            request-loan-book: request-loan-book
+        }
+
+    jackson:
+        serialization:
+            indent-output: true
+
+project:
+    app:
+        jwtSecret: ======================Project=Spring===========================
+        jwtExpirationMs: 86400000
+
+logging:
+    level:
+      org.springframework.security: DEBUG
+      com.project.authapigateway: DEBUG
+
+services:
+    loan-service: http://localhost:9001
+    book-service: http://localhost:9002

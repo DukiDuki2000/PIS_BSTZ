@@ -1,0 +1,42 @@
+server:
+    port: 9001
+
+spring:
+    application:
+        name: loan-service
+
+    datasource:
+        url: jdbc:postgresql://localhost:5900/loandb
+        username: loan
+        password: loan
+
+    jpa:
+      hibernate:
+          ddl-auto: update
+
+    data:
+      mongodb:
+          authentication-database: admin
+          username: root
+          password: admin
+          database: admin
+          port: 5850
+          host: localhost
+
+    kafka:
+        bootstrap-address: localhost:29092
+        bootstrap-servers: localhost:29092
+        consumer:
+            group-id: loan-service
+            auto-offset-reset: latest
+            bootstrap-servers:
+        topics: {
+            request-loan-book: request-loan-book,
+            loan-book: loan-book,
+            loan-succes: loan-succes,
+            loan-fail: loan-fail
+        }
+
+    jackson:
+        serialization:
+            indent-output: true
