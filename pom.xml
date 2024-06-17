@@ -11,6 +11,7 @@
     <modules>
         <module>loan-service</module>
         <module>book-service</module>
+        <module>auth-api-gateway</module>
         <module>schem</module>
     </modules>
 </project>
