@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiSearch } from 'react-icons/fi'; // Import the search icon from react-icons
-import '../App.css'; // Import the global CSS file
+import { FiSearch } from 'react-icons/fi';
+import '../App.css';
 
-  const SearchBar: React.FC = () => {
+const SearchBar: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 

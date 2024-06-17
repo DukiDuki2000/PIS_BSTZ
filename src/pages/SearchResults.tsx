@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 interface SearchResult {
-  id: number;
+  id: string;
   title: string;
   author: string;
   description: string;
@@ -24,7 +24,10 @@ const SearchResults: React.FC = () => {
         setIsLoading(true);
         setError(null);
         try {
-          const result = await axios.get(`/api/search?term=${searchTerm}`);
+          const encodedTerm = encodeURIComponent(searchTerm);
+          const result = await axios.get(`http://localhost:9002/api/search?term=${encodedTerm}`, {
+            withCredentials: true,
+          });
           setSearchResults(result.data);
         } catch (error: any) {
           setError(error);
@@ -32,6 +35,7 @@ const SearchResults: React.FC = () => {
           setIsLoading(false);
         }
       };
+
       fetchSearchResults();
     }
   }, [searchTerm]);

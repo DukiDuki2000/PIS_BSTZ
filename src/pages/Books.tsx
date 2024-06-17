@@ -2,12 +2,14 @@ import React, { useState, useEffect, ChangeEvent } from 'react';
 import axios from 'axios';
 import SearchBar from "../components/SearchBar";
 import { useUser } from "../components/UserContext"; 
+import BookStatus from "../components/BookStatus";
+import BookCategory from '../components/BookCategory'; // Import the BookCategory enum
 
 function Books() {
     const [books, setBooks] = useState([]);
-    const [sortBy, setSortBy] = useState<string>('title'); 
-    const [sortOrder, setSortOrder] = useState<string>('asc'); 
-    const { user } = useUser(); 
+    const [sortBy, setSortBy] = useState<string>('title');
+    const [sortOrder, setSortOrder] = useState<string>('asc');
+    const { user } = useUser();
 
     const fetchBooks = async () => {
         try {
@@ -16,7 +18,7 @@ function Books() {
                 params.sortBy = sortBy;
                 params.sortOrder = sortOrder;
             }
-            const { data } = await axios.get('http://localhost:7788/books', { params });
+            const { data } = await axios.get('http://localhost:9002/books', { params });
             setBooks(data);
         } catch (error) {
             console.error('There was an error fetching the books!', error);
@@ -37,22 +39,22 @@ function Books() {
 
     const handleBorrowBook = async (id: string) => {
         if (!user) {
-            alert('Musisz być zalogowany, aby wypożyczyć książkę.');
+            alert('You must be logged in to borrow a book.');
             return;
         }
 
         try {
             await axios.post(
-                `http://localhost:7788/books/${id}/borrow`,
+                `http://localhost:9002/books/${id}/borrow`,
                 {},
                 {
                     headers: {
-                        Authorization: `Bearer ${user.token}`, // Przykład dodania tokenu w nagłówku
+                        Authorization: `Bearer ${user.token}`, // Example of adding a token in the header
                     },
                 }
             );
             alert(`Book with id ${id} borrowed successfully.`);
-            fetchBooks(); 
+            fetchBooks();
         } catch (error) {
             console.error('There was an error borrowing the book!', error);
             alert('Failed to borrow the book.');
@@ -64,32 +66,31 @@ function Books() {
             <div className='sort_controls'>
                 <SearchBar />
                 <label>
-                    Sortuj według:
+                    Sort by:
                     <select value={sortBy} onChange={handleSortByChange}>
-                        <option value='title'>Tytuł</option>
-                        <option value='authorSurname'>Nazwisko autora</option>
-                        <option value='category'>Kategoria</option>
+                        <option value='title'>Title</option>
+                        {/*<option value='category'>Category</option>*/}
                     </select>
                 </label>
                 <label>
-                    Kierunek sortowania:
+                    Sort order:
                     <select value={sortOrder} onChange={handleSortOrderChange}>
-                        <option value='asc'>Rosnąco</option>
-                        <option value='desc'>Malejąco</option>
+                        <option value='asc'>Ascending</option>
+                        <option value='desc'>Descending</option>
                     </select>
                 </label>
             </div>
             <div className='books_grid'>
-                {books.map(({ id, title, authorName, authorSurname, category, availability }) => (
+                {books.map(({ id, title, author, category, description, status }) => (
                     <div key={id} className='book_tile'>
                         <h3>{title}</h3>
-                        <p><strong>Author:</strong> {authorName} {authorSurname}</p>
-                        <p><strong>Category:</strong> {category}</p>
-                        <button 
-                            onClick={() => handleBorrowBook(id)} 
-                            disabled={availability <= 0}
+                        <p><strong>Author:</strong> {author}</p>
+                        <p><strong>Category:</strong> {BookCategory[category as keyof typeof BookCategory]}</p>
+                        <button
+                            onClick={() => handleBorrowBook(id)}
+                            disabled={status === BookStatus.UNAVAILABLE || status === BookStatus.ORDERED || status === BookStatus.BORROWED}
                         >
-                            {availability > 0 ? 'Wypożycz' : 'Niedostępna'}
+                            Borrow
                         </button>
                     </div>
                 ))}

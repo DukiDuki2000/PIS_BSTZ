@@ -33,6 +33,7 @@ import EditBookSelection from './pages/Edit_book_selection';
 import EditBook from './pages/Edit_book';
 
 import EventBus from "./common/EventBus";
+import HealthCheck from "./components/Health"; // Import the HealthCheck component
 
 type Props = {};
 
@@ -188,8 +189,10 @@ class App extends Component<Props, State> {
               <Route path="/register" element={<Register />} />
               <Route path="/profile" element={<Profile />} />
               <Route path='/about_us' element={<About_Us />} />
-              {/* <Route path='/books' element={<Books />} />
-              <Route path='/search' element={<SearchResults />} /> */}
+              <Route path='/books' element={<Books />} />
+              <Route path='/search' element={<SearchResults />} />
+              {/* Health Check Route */}
+              <Route path='/search/health' element={<HealthCheck />} />
               {/* Userowe */}
               <Route path="/user" element={<UserRoute element={<BoardUser />} />} />
               <Route path='/books' element={<UserRoute element={<Books />} />} />
@@ -207,7 +210,7 @@ class App extends Component<Props, State> {
               <Route path="/add_book" element={<AdminRoute element={<Add_book />} />} />
               <Route path="/edit_book_selection" element={<AdminRoute element={<EditBookSelection />} />} />
               <Route path="/edit_book/:bookId" element={<AdminRoute element={<EditBook />} />} />
-              <Route path="v" element={<AdminRoute element={<AllBorrowings />} />} />
+              <Route path="/all_borrowings" element={<AdminRoute element={<AllBorrowings />} />} />
             </Routes>
           </div>
           <Footer companyName="Firma Krzak Sp. z o.o." year={2024} />

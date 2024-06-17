@@ -2,8 +2,8 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 8888;
-const SPRING_URL = process.env.SPRING_URL || 'http://localhost:7788';
+const PORT = process.env.PORT || 9002;
+const SPRING_URL = process.env.SPRING_URL || 'http://localhost:9002';
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'build')));
