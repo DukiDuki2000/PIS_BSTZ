@@ -45,12 +45,12 @@ spring:
             port: 27017
             host: mongo
     kafka:
-        bootstrap-address: kafka:29092
-        bootstrap-servers: kafka:29092
+        bootstrap-address: kafka:9092
+        bootstrap-servers: kafka:9092
         consumer:
             group-id: book-service
             auto-offset-reset: latest
-            bootstrap-servers: kafka:29092
+            bootstrap-servers: kafka:9092
             properties:
               spring.json.trusted.packages: com.project.*
         topics: {
