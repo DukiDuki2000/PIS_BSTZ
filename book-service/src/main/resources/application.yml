@@ -6,10 +6,10 @@ spring:
         name: book-service
 
 #    elasticsearch:
-#        uris: http://localhost:9200
+#        uris: http://es01:9200
 
 #    elasticsearch:
-#        host: localhost
+#        host: es01
 #        uri: 9200
 #        ssl:
 #            enabled: true
@@ -18,7 +18,7 @@ spring:
 #            truststore-username: elastic
 
 #    elasticsearch:
-#        uris: https://localhost:9200
+#        uris: https://es01:9200
 #        username: elastic
 #        password: GQ7wpccv9U-ccS4bpkAc
 #        ssl:

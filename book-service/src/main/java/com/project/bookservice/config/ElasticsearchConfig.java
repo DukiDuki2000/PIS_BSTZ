@@ -46,7 +46,7 @@ public class ElasticsearchConfig {
         BasicCredentialsProvider credsProv = new BasicCredentialsProvider();
         credsProv.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials("elastic", "password"));
 
-        RestClient restClient = RestClient.builder(new HttpHost("localhost", 9200, "https"))
+        RestClient restClient = RestClient.builder(new HttpHost("es01", 9200, "https"))
                 .setHttpClientConfigCallback(hc -> hc
                         .setSSLContext(sslContext)
                         .setDefaultCredentialsProvider(credsProv)
