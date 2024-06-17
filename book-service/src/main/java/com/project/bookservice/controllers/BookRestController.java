@@ -2,6 +2,7 @@ package com.project.bookservice.controllers;
 
 import com.project.bookservice.models.Book.Book;
 import com.project.bookservice.models.Book.BookCategory;
+import com.project.bookservice.models.Log.Log;
 import com.project.bookservice.services.BookService1;
 import com.project.bookservice.services.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class BookRestController {
     @PostMapping("/add")
     Book addBook(@RequestBody Book newBook) {
         logService.log("Added", newBook);
-
+        Log log = new Log("Dodano książkę", newBook.getTitle()+" "+newBook.getAuthor()+" "+newBook.getIsbn());
         return bookService.add(newBook);
     }
 

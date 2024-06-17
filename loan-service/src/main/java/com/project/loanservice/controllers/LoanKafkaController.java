@@ -55,6 +55,7 @@ public class LoanKafkaController {
         loan.setBookId(command.bookId());
         loan.setUserId(command.userId());
         loan.setEmail(command.email());
+        loan.setTitle(command.title());
         loan.setCreationDate(Calendar.getInstance().getTime());
         Log log = new Log("Utworzono wypozyczenie", command.bookId().toString()+command.userId().toString()+command.email());
         return loanRepository.save(loan);
