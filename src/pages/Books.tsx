@@ -1,7 +1,7 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import axios from 'axios';
 import SearchBar from "../components/SearchBar";
-import { useUser } from "../components/UserContext"; 
+import { useUser } from "../components/UserContext";
 import BookStatus from "../components/BookStatus";
 import BookCategory from '../components/BookCategory'; // Import the BookCategory enum
 
@@ -18,7 +18,7 @@ function Books() {
                 params.sortBy = sortBy;
                 params.sortOrder = sortOrder;
             }
-            const { data } = await axios.get('http://localhost:9002/books', { params });
+            const { data } = await axios.get('http://localhost:9002/book/all', { params });
             setBooks(data);
         } catch (error) {
             console.error('There was an error fetching the books!', error);
@@ -37,23 +37,29 @@ function Books() {
         setSortOrder(event.target.value);
     };
 
-    const handleBorrowBook = async (id: string) => {
+    const handleBorrowBook = async (bookId: string) => {
         if (!user) {
             alert('You must be logged in to borrow a book.');
             return;
         }
 
+        const loanCommand = {
+            userId: user.id,
+            email: user.name, // or user.email if email is used instead of name
+            bookId: bookId
+        };
+
         try {
             await axios.post(
-                `http://localhost:9002/books/${id}/borrow`,
-                {},
+                `http://localhost:9000/api/v1/loan/create`,
+                loanCommand,
                 {
                     headers: {
-                        Authorization: `Bearer ${user.token}`, // Example of adding a token in the header
+                        Authorization: `Bearer ${user.token}`,
                     },
                 }
             );
-            alert(`Book with id ${id} borrowed successfully.`);
+            alert(`Book with id ${bookId} borrowed successfully.`);
             fetchBooks();
         } catch (error) {
             console.error('There was an error borrowing the book!', error);

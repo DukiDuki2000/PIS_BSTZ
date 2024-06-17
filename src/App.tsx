@@ -18,8 +18,6 @@ import Home from "./components/home.component";
 import Profile from "./components/profile.component";
 
 import BoardUser from "./components/board-user.component";
-import BoardAdmin from "./components/board-admin.component";
-import BoardMod from "./components/board-moderator.component";
 
 import Footer from "./components/Footer";
 import Books from './pages/Books';
@@ -135,11 +133,11 @@ class App extends Component<Props, State> {
                     Użytkownik
                   </Link>
                 <li className="nav-item">
-                  <Link to={"/books"} className="nav-link" style={{ color: 'white' }}>
+                  <Link to={"/book/all"} className="nav-link" style={{ color: 'white' }}>
                     Książki
                   </Link>
                 </li>
-                  <Link to={"/borrowed_books"} className="nav-link" style={{ color: 'white' }}>
+                  <Link to={"/borrowed_book"} className="nav-link" style={{ color: 'white' }}>
                     Wypożyczenia użytkownika
                   </Link>
                 </li>
@@ -192,9 +190,9 @@ class App extends Component<Props, State> {
               <Route path='/search/health' element={<HealthCheck />} />
               {/* Userowe */}
               <Route path="/user" element={<UserRoute element={<BoardUser />} />} />
-              <Route path='/books' element={<UserRoute element={<Books />} />} />
+              <Route path='/book/all' element={<UserRoute element={<Books />} />} />
               <Route path='/search' element={<UserRoute element={<SearchResults />} />} />
-              <Route path='/borrowed_books' element={<UserRoute element={<BorrowedBooksUser />} />} />
+              <Route path='/borrowed_book' element={<UserRoute element={<BorrowedBooksUser />} />} />
               {/* Moderatorowe */}
               <Route path="/mod" element={<ModRoute element={<Home_admin />} />} />
               <Route path="/add_book" element={<ModRoute element={<Add_book />} />} />

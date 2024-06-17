@@ -4,25 +4,37 @@ import Go_back from '../components/Go_back';
 
 function AddBook() {
     const [title, setTitle] = useState('');
-    const [authorName, setAuthorName] = useState('');
-    const [authorSurname, setAuthorSurname] = useState('');
+    const [author, setAuthor] = useState('');
+    const [isbn, setIsbn] = useState('');
+    const [publisher, setPublisher] = useState('');
+    const [publishedDate, setPublishedDate] = useState('');
+    const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
+    const [amount, setAmount] = useState('');
     const [submitting, setSubmitting] = useState(false);
 
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
         setSubmitting(true);
         try {
-            await axios.post('http://localhost:7788/book/add', {
-                title: title,
-                author_name: authorName,
-                author_surname: authorSurname,
-                category: category
+            await axios.post('http://localhost:9002/book/add', {
+                title,
+                author,
+                isbn,
+                publisher,
+                publishedDate,
+                description,
+                category,
+                amount: parseInt(amount)
             });
             setTitle('');
-            setAuthorName('');
-            setAuthorSurname('');
+            setAuthor('');
+            setIsbn('');
+            setPublisher('');
+            setPublishedDate('');
+            setDescription('');
             setCategory('');
+            setAmount('');
         } catch (error) {
             console.error('There was an error adding the book!', error);
         } finally {
@@ -48,22 +60,51 @@ function AddBook() {
                     />
                 </div>
                 <div className="form_group">
-                    <label htmlFor="authorName">Imię autora</label>
+                    <label htmlFor="author">Imię i nazwisko autora</label>
                     <input
                         type="text"
-                        id="authorName"
-                        value={authorName}
-                        onChange={(e) => setAuthorName(e.target.value)}
+                        id="author"
+                        value={author}
+                        onChange={(e) => setAuthor(e.target.value)}
                         required
                     />
                 </div>
                 <div className="form_group">
-                    <label htmlFor="authorSurname">Nazwisko autora</label>
+                    <label htmlFor="isbn">ISBN</label>
                     <input
                         type="text"
-                        id="authorSurname"
-                        value={authorSurname}
-                        onChange={(e) => setAuthorSurname(e.target.value)}
+                        id="isbn"
+                        value={isbn}
+                        onChange={(e) => setIsbn(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="form_group">
+                    <label htmlFor="publisher">Wydawca</label>
+                    <input
+                        type="text"
+                        id="publisher"
+                        value={publisher}
+                        onChange={(e) => setPublisher(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="form_group">
+                    <label htmlFor="publishedDate">Data publikacji</label>
+                    <input
+                        type="date"
+                        id="publishedDate"
+                        value={publishedDate}
+                        onChange={(e) => setPublishedDate(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="form_group">
+                    <label htmlFor="description">Opis</label>
+                    <textarea
+                        id="description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                         required
                     />
                 </div>
@@ -76,13 +117,31 @@ function AddBook() {
                         required
                     >
                         <option value="">Wybierz kategorię</option>
-                        <option value="fantasy">Fantasy</option>
-                        <option value="sci-fi">Science Fiction</option>
-                        <option value="non-fiction">Non-Fiction</option>
-                        <option value="biography">Biografia</option>
-                        <option value="history">Historia</option>
-                        <option value="mystery">Kryminał</option>
+                        <option value="FICTION">Fiction</option>
+                        <option value="NON_FICTION">Non-Fiction</option>
+                        <option value="SCIENCE_FICTION">Science Fiction</option>
+                        <option value="FANTASY">Fantasy</option>
+                        <option value="THRILLER">Thriller</option>
+                        <option value="ROMANCE">Romance</option>
+                        <option value="HORROR">Horror</option>
+                        <option value="HISTORY">History</option>
+                        <option value="BIOGRAPHY">Biography</option>
+                        <option value="POETRY">Poetry</option>
+                        <option value="DRAMA">Drama</option>
+                        <option value="CHILDRENS">Children's</option>
+                        <option value="YOUTH_LITERATURE">Youth Literature</option>
+                        <option value="ADULT_LITERATURE">Adult Literature</option>
                     </select>
+                </div>
+                <div className="form_group">
+                    <label htmlFor="amount">Ilość</label>
+                    <input
+                        type="number"
+                        id="amount"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        required
+                    />
                 </div>
                 <button type="submit" disabled={submitting}>
                     {submitting ? 'Dodawanie...' : 'Dodaj książkę'}

@@ -19,7 +19,7 @@ function BorrowedBooks() {
                 params.sortBy = sortBy;
                 params.sortOrder = sortOrder;
             }
-            const { data } = await axios.get(`http://localhost:7788/users/${user.id}/borrowed-books`, { 
+            const { data } = await axios.get(`http://localhost:9000/loan/${user.id}`, { 
                 params,
                 headers: {
                     Authorization: `Bearer ${user.token}`,
@@ -50,8 +50,6 @@ function BorrowedBooks() {
                     Sortuj według:
                     <select value={sortBy} onChange={handleSortByChange}>
                         <option value='title'>Tytuł</option>
-                        <option value='authorSurname'>Nazwisko autora</option>
-                        <option value='category'>Kategoria</option>
                     </select>
                 </label>
                 <label>
@@ -63,10 +61,10 @@ function BorrowedBooks() {
                 </label>
             </div>
             <div className='books_grid'>
-                {books.map(({ id, title, authorName, authorSurname, category }) => (
+                {books.map(({ id, title, author, category }) => (
                     <div key={id} className='book_tile'>
                         <h3>{title}</h3>
-                        <p><strong>Author:</strong> {authorName} {authorSurname}</p>
+                        <p><strong>Author:</strong> {author} </p>
                         <p><strong>Category:</strong> {category}</p>
                     </div>
                 ))}

@@ -19,7 +19,7 @@ function AllBorrowings() {
                 params.sortBy = sortBy;
                 params.sortOrder = sortOrder;
             }
-            const { data } = await axios.get(`http://localhost:7788/admin/borrowings`, { 
+            const { data } = await axios.get(`http://localhost:9000/loan/all`, { 
                 params,
                 headers: {
                     Authorization: `Bearer ${user.token}`,
