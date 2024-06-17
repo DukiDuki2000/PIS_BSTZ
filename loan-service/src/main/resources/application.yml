@@ -6,7 +6,7 @@ spring:
         name: loan-service
 
     datasource:
-        url: jdbc:postgresql://localhost:5900/loandb
+        url: jdbc:postgresql://postgresloan:5432/loandb
         username: loan
         password: loan
 
@@ -20,12 +20,12 @@ spring:
           username: root
           password: admin
           database: admin
-          port: 5850
-          host: localhost
+          port: 27017
+          host: mongo
 
     kafka:
-        bootstrap-address: localhost:29092
-        bootstrap-servers: localhost:29092
+        bootstrap-address: kafka:29092
+        bootstrap-servers: kafka:29092
         consumer:
             group-id: loan-service
             auto-offset-reset: latest
