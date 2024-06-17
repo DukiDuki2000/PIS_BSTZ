@@ -18,7 +18,7 @@ function Books() {
                 params.sortBy = sortBy;
                 params.sortOrder = sortOrder;
             }
-            const { data } = await axios.get('http://localhost:9002/book/all', { params });
+            const { data } = await axios.get('http://localhost:9003/book/all', { params });
             setBooks(data);
         } catch (error) {
             console.error('There was an error fetching the books!', error);

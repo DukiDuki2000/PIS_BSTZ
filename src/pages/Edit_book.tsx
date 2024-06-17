@@ -21,7 +21,7 @@ const EditBook: React.FC = () => {
     useEffect(() => {
         const fetchBook = async () => {
             try {
-                const response = await axios.get(`http://localhost:9002/books/${bookId}`);
+                const response = await axios.get(`http://localhost:9003/books/${bookId}`);
                 const bookData: Book = response.data;
                 setBook(bookData);
                 setIsLoading(false);
@@ -36,7 +36,7 @@ const EditBook: React.FC = () => {
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
         try {
-            await axios.put(`http://localhost:9002/books/edit/${bookId}`, {
+            await axios.put(`http://localhost:9003/books/edit/${bookId}`, {
                 title: book.title,
                 author: book.author,
             });

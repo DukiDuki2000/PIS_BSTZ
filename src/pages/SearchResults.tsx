@@ -25,7 +25,7 @@ const SearchResults: React.FC = () => {
         setError(null);
         try {
           const encodedTerm = encodeURIComponent(searchTerm);
-          const result = await axios.get(`http://localhost:9002/api/search?term=${encodedTerm}`, {
+          const result = await axios.get(`http://localhost:9003/api/search?term=${encodedTerm}`, {
             withCredentials: true,
           });
           setSearchResults(result.data);

@@ -6,7 +6,7 @@ const HealthCheck: React.FC = () => {
   useEffect(() => {
     const fetchHealthStatus = async () => {
       try {
-        const response = await fetch('http://localhost:9002/api/search/health');
+        const response = await fetch('http://localhost:9003/api/search/health');
         const data = await response.text();
         setStatus(data);
       } catch (error) {

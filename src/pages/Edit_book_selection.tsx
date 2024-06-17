@@ -15,7 +15,7 @@ function Books() {
                 params.sortBy = sortBy;
                 params.sortOrder = sortOrder;
             }
-            const { data } = await axios.get('http://localhost:9002/book/all', { params });
+            const { data } = await axios.get('http://localhost:9003/book/all', { params });
             setBooks(data);
         } catch (error) {
             console.error('There was an error fetching the books!', error);
@@ -37,7 +37,7 @@ function Books() {
     const handleDeleteBook = async (id: string) => {
         if (window.confirm('Czy na pewno chcesz usunąć tę książkę?')) {
             try {
-                await axios.delete(`http://localhost:9002/book/all/delete/${id}`);
+                await axios.delete(`http://localhost:9003/book/all/delete/${id}`);
                 // Po usunięciu książki, ponownie pobierz listę książek
                 fetchBooks();
             } catch (error) {
