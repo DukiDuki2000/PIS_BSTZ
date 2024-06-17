@@ -4,11 +4,11 @@ import axios from 'axios';
 
 interface SearchResult {
   id: string;
-  title: string;
-  author: string;
-  description: string;
-  category: string;
-  status: string;
+  public_books_title: string;
+  public_books_author: string;
+  public_books_description: string;
+  public_books_category: string;
+  public_books_status: string;
 }
 
 const SearchResults: React.FC = () => {
@@ -30,6 +30,7 @@ const SearchResults: React.FC = () => {
           });
           setSearchResults(result.data);
         } catch (error: any) {
+          console.error('Error fetching search results:', error);
           setError(error);
         } finally {
           setIsLoading(false);
@@ -41,18 +42,22 @@ const SearchResults: React.FC = () => {
   }, [searchTerm]);
 
   return (
-    <div>
+    <div className='page_content'>
       <h1>Search Results</h1>
       {isLoading && <p>Searching...</p>}
       {error && <p>Error: {error.message}</p>}
       {searchResults.length > 0 ? (
-        <ul>
+        <div className='books_grid'>
           {searchResults.map((result) => (
-            <li key={result.id}>
-              <strong>{result.title}</strong> - {result.author} - {result.description} - {result.category} - {result.status}
-            </li>
+            <div key={result.id} className='book_tile'>
+              <h3>{result.public_books_title}</h3>
+              <p><strong>Author:</strong> {result.public_books_author}</p>
+              <p><strong>Description:</strong> {result.public_books_description}</p>
+              <p><strong>Category:</strong> {result.public_books_category}</p>
+              <p><strong>Status:</strong> {result.public_books_status}</p>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         !isLoading && <p>No results found.</p>
       )}
