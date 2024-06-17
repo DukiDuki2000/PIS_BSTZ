@@ -64,6 +64,7 @@ export default class Login extends Component<Props, State> {
         });
       },
       error => {
+        console.log("dupa")
         const resMessage =
           (error.response &&
             error.response.data &&

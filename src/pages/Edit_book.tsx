@@ -5,9 +5,7 @@ import { useParams } from 'react-router-dom';
 interface Book {
     id: string;
     title: string;
-    authorName: string;
-    authorSurname: string;
-    category: string;
+    author: string;
 }
 
 const EditBook: React.FC = () => {
@@ -15,9 +13,7 @@ const EditBook: React.FC = () => {
     const [book, setBook] = useState<Book>({
         id: '',
         title: '',
-        authorName: '',
-        authorSurname: '',
-        category: ''
+        author: '',
     });
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<Error | null>(null);
@@ -25,7 +21,7 @@ const EditBook: React.FC = () => {
     useEffect(() => {
         const fetchBook = async () => {
             try {
-                const response = await axios.get(`http://localhost:7788/book/${bookId}`);
+                const response = await axios.get(`http://localhost:9002/books/${bookId}`);
                 const bookData: Book = response.data;
                 setBook(bookData);
                 setIsLoading(false);
@@ -40,11 +36,9 @@ const EditBook: React.FC = () => {
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
         try {
-            await axios.put(`http://localhost:7788/book/edit/${bookId}`, {
+            await axios.put(`http://localhost:9002/books/edit/${bookId}`, {
                 title: book.title,
-                authorName: book.authorName,
-                authorSurname: book.authorSurname,
-                category: book.category
+                author: book.author,
             });
             alert('Book updated successfully');
         } catch (error) {
@@ -85,35 +79,16 @@ const EditBook: React.FC = () => {
                     />
                 </div>
                 <div className='form_group'>
-                    <label>Imię autora</label>
+                    <label>Imię i nazwisko autora</label>
                     <input
                         type="text"
                         name="authorName"
-                        value={book.authorName}
+                        value={book.author}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <div className='form_group'>
-                    <label>Nazwisko autora</label>
-                    <input
-                        type="text"
-                        name="authorSurname"
-                        value={book.authorSurname}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className='form_group'>
-                    <label>Kategoria</label>
-                    <input
-                        type="text"
-                        name="category"
-                        value={book.category}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
+                
                 <button type="submit">Zaktualizuj</button>
             </form>
         </div>

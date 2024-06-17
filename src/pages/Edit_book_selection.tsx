@@ -15,7 +15,7 @@ function Books() {
                 params.sortBy = sortBy;
                 params.sortOrder = sortOrder;
             }
-            const { data } = await axios.get('http://localhost:7788/books', { params });
+            const { data } = await axios.get('http://localhost:9002/books', { params });
             setBooks(data);
         } catch (error) {
             console.error('There was an error fetching the books!', error);
@@ -37,7 +37,7 @@ function Books() {
     const handleDeleteBook = async (id: string) => {
         if (window.confirm('Czy na pewno chcesz usunąć tę książkę?')) {
             try {
-                await axios.delete(`http://localhost:7788/book/delete/${id}`);
+                await axios.delete(`http://localhost:9002/books/delete/${id}`);
                 // Po usunięciu książki, ponownie pobierz listę książek
                 fetchBooks();
             } catch (error) {
@@ -58,8 +58,6 @@ function Books() {
                             Sortuj według: 
                             <select value={sortBy} onChange={handleSortByChange}>
                                 <option value='title'>Tytuł</option>
-                                <option value='authorSurname'>Nazwisko autora</option>
-                                <option value='category'>Kategoria</option>
                             </select>
                         </label>
                     </div>
@@ -74,10 +72,10 @@ function Books() {
                     </div>
                 </div>
                 <div className='books_grid'>
-                    {books.map(({ id, title, authorName, authorSurname, category }) => (
+                    {books.map(({ id, title, author, category, status }) => (
                         <div key={id} className='book_tile'>
                             <h3>{title}</h3>
-                            <p><strong>Author:</strong> {authorName} {authorSurname}</p>
+                            <p><strong>Author:</strong> {author}</p>
                             <p><strong>Category:</strong> {category}</p>
                             <Link to={`/edit_book/${id}`} className="edit_button">
                                 <button>Edytuj</button>

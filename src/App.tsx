@@ -27,6 +27,7 @@ import About_Us from "./pages/About_Us";
 import SearchResults from './pages/SearchResults';
 import BorrowedBooksUser from "./pages/Borrowed_user";
 import AllBorrowings from "./pages/Borrowed_mod";
+import Home_admin from "./pages/Home_admin";
 
 import Add_book from './pages/Add_book';
 import EditBookSelection from './pages/Edit_book_selection';
@@ -111,9 +112,6 @@ class App extends Component<Props, State> {
                   <Link to={"/mod"} className="nav-link" style={{ color: 'white' }}>
                     Panel moderacyjny
                   </Link>
-                  <Link to={"/books"} className="nav-link" style={{ color: 'white' }}>
-                    Książki
-                  </Link>
                   <Link to={"/all_borrowings"} className="nav-link" style={{ color: 'white' }}>
                     Wypożyczenia
                   </Link>
@@ -125,9 +123,6 @@ class App extends Component<Props, State> {
                   <Link to={"/admin"} className="nav-link" style={{ color: 'white' }}>
                     Panel administracyjny
                   </Link>
-                  <Link to={"/books"} className="nav-link" style={{ color: 'white' }}>
-                    Książki
-                  </Link>
                   <Link to={"/all_borrowings"} className="nav-link" style={{ color: 'white' }}>
                     Wypożyczenia
                   </Link>
@@ -136,14 +131,16 @@ class App extends Component<Props, State> {
 
               {currentUser && (
                 <li className="nav-item">
-                  <Link to={"/user"} className="nav-link" style={{ color: 'white' }}>
+                  <Link to={"/profile"} className="nav-link" style={{ color: 'white' }}>
                     Użytkownik
                   </Link>
+                <li className="nav-item">
                   <Link to={"/books"} className="nav-link" style={{ color: 'white' }}>
                     Książki
                   </Link>
+                </li>
                   <Link to={"/borrowed_books"} className="nav-link" style={{ color: 'white' }}>
-                    Wypożyczenia
+                    Wypożyczenia użytkownika
                   </Link>
                 </li>
               )}
@@ -157,7 +154,7 @@ class App extends Component<Props, State> {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="/login" className="nav-link" onClick={this.logOut}>
+                  <a href="/signin" className="nav-link" onClick={this.logOut}>
                     Wyloguj
                   </a>
                 </li>
@@ -165,7 +162,7 @@ class App extends Component<Props, State> {
             ) : (
               <div className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link to={"/login"} className="nav-link" style={{ color: 'white' }}>
+                  <Link to={"/signin"} className="nav-link" style={{ color: 'white' }}>
                     Zaloguj
                   </Link>
                 </li>
@@ -185,12 +182,12 @@ class App extends Component<Props, State> {
               {/* Home - all */}
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/signin" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/profile" element={<Profile />} />
               <Route path='/about_us' element={<About_Us />} />
-              <Route path='/books' element={<Books />} />
-              <Route path='/search' element={<SearchResults />} />
+              {/* <Route path='/books' element={<Books />} />
+              <Route path='/search' element={<SearchResults />} /> */}
               {/* Health Check Route */}
               <Route path='/search/health' element={<HealthCheck />} />
               {/* Userowe */}
@@ -199,14 +196,13 @@ class App extends Component<Props, State> {
               <Route path='/search' element={<UserRoute element={<SearchResults />} />} />
               <Route path='/borrowed_books' element={<UserRoute element={<BorrowedBooksUser />} />} />
               {/* Moderatorowe */}
-              <Route path="/admin" element={<ModRoute element={<BoardMod />} />} />
+              <Route path="/mod" element={<ModRoute element={<Home_admin />} />} />
               <Route path="/add_book" element={<ModRoute element={<Add_book />} />} />
               <Route path="/edit_book_selection" element={<ModRoute element={<EditBookSelection />} />} />
               <Route path="/edit_book/:bookId" element={<ModRoute element={<EditBook />} />} />
               <Route path="/all_borrowings" element={<ModRoute element={<AllBorrowings />} />} />
-
               {/* Adminowe */}
-              <Route path="/admin" element={<AdminRoute element={<BoardAdmin />} />} />
+              <Route path="/admin" element={<AdminRoute element={<Home_admin />} />} />
               <Route path="/add_book" element={<AdminRoute element={<Add_book />} />} />
               <Route path="/edit_book_selection" element={<AdminRoute element={<EditBookSelection />} />} />
               <Route path="/edit_book/:bookId" element={<AdminRoute element={<EditBook />} />} />
