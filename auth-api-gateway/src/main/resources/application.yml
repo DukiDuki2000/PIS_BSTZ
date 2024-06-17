@@ -43,4 +43,4 @@ logging:
 
 services:
     loan-service: http://localhost:9001
-    book-service: http://localhost:9002
+    book-service: http://localhost:9003

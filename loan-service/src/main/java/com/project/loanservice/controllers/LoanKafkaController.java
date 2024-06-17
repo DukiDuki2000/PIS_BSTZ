@@ -50,13 +50,16 @@ public class LoanKafkaController {
             groupId = "loan-service",
             containerFactory = "loanBookEventSuccesKafkaListenerContainerFactory")
     public Loan listen_succes(LoanSuccesEvent command) {
-        log.info("Succes" + command);
         Loan loan = new Loan();
         loan.setBookId(command.bookId());
+        loan.setTitle(command.title());
+        loan.setAuthor(command.author());
         loan.setUserId(command.userId());
         loan.setEmail(command.email());
+        loan.setTitle(command.title());
         loan.setCreationDate(Calendar.getInstance().getTime());
-        Log log = new Log("Utworzono wypozyczenie", command.bookId().toString()+command.userId().toString()+command.email());
+        log.info("Succes{}", command);
+        Log logn = new Log("Utworzono wypozyczenie", command.bookId().toString()+command.userId().toString()+command.email());
         return loanRepository.save(loan);
     }
 
