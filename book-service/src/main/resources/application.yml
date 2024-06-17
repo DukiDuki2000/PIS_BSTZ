@@ -1,11 +1,20 @@
 server:
     port: 9002
 
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.elasticsearch.client: DEBUG
+
 spring:
     application:
         name: book-service
+    elasticsearch:
+        username: elastic
+        password: password
 
-#    elasticsearch:
+    #    elasticsearch:
 #        uris: http://localhost:9200
 
 #    elasticsearch:
