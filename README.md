@@ -57,4 +57,6 @@ The project includes a complete **Continuous Integration and Continuous Deployme
 - **Error Handling** – If an error occurs, Jenkins automatically creates an issue in Jira for tracking.
 - **Versioning** – All application versions are stored in **Sonatype Nexus** to ensure proper version management and rollback capabilities.
 
-![Library System Architecture](https://github.com/DukiDuki2000/PIS_BSTZ/blob/PIS02-59-back-end/dock/frag.png)
+![frag](https://github.com/DukiDuki2000/PIS_BSTZ/blob/PIS02-59-back-end/dock/frag.png)
+![fragment](https://github.com/DukiDuki2000/PIS_BSTZ/blob/PIS02-59-back-end/dock/fragment%20pis.png)
+![schem](https://github.com/DukiDuki2000/PIS_BSTZ/blob/PIS02-59-back-end/dock/schamet.png)
