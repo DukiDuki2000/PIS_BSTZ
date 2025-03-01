@@ -39,6 +39,21 @@ The system consists of multiple microservices communicating via REST API and Apa
 #### 5. **System Logs**
    - Log data is stored in **MongoDB**.
    - Logs are analyzed and searched using **Elasticsearch**.
+## 🔄 CI/CD Pipeline
+The project includes a complete **Continuous Integration and Continuous Deployment (CI/CD) pipeline** to automate builds, tests, deployments, and monitoring. The pipeline consists of:
 
+### 🔹 Infrastructure
+- **Docker** – All services are containerized, including MongoDB, Elasticsearch, PostgreSQL, and additional tools.
+- **Ngrok** – Used to establish a secure tunnel between the internal Jenkins server and GitHub for webhook triggering.
+- **DbGate** – Database management tool.
+- **Jira** – Issue tracking system for error handling.
+- **Sonatype Nexus** – Repository manager for storing versioned builds.
 
+### 🔹 Jenkins Automation
+- **Jenkins** is responsible for building, testing, and deploying the application.
+- **GitHub Webhooks** trigger Jenkins jobs automatically upon new commits or pull requests.
+- **Automated Testing** – Jenkins runs unit tests and integration tests to ensure application stability.
+- **Deployment** – Jenkins launches the application after successful builds.
+- **Error Handling** – If an error occurs, Jenkins automatically creates an issue in Jira for tracking.
+- **Versioning** – All application versions are stored in **Sonatype Nexus** to ensure proper version management and rollback capabilities.
 
