@@ -60,3 +60,9 @@ The project includes a complete **Continuous Integration and Continuous Deployme
 ![frag](https://github.com/DukiDuki2000/PIS_BSTZ/blob/PIS02-59-back-end/dock/frag.png)
 ![fragment](https://github.com/DukiDuki2000/PIS_BSTZ/blob/PIS02-59-back-end/dock/fragment%20pis.png)
 ![schem](https://github.com/DukiDuki2000/PIS_BSTZ/blob/PIS02-59-back-end/dock/schamet.png)
+
+
+## Contributors
+- [@TokareG](https://github.com/TokareG)
+- [@DukiDuki](https://github.com/DukiDuki2000)
+- [@VaioStar](https://github.com/VaioStar)
